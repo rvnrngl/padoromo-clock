@@ -27,18 +27,18 @@ function App() {
   const changeTime = (amount, type) => {
     if (timerOn === false) {
       if (type === "break") {
-        if (breakTime <= 60 && amount < 0) {
-          return;
-        }
-        if (breakTime >= 3600) {
+        if (
+          (breakTime <= 60 && amount < 0) ||
+          (breakTime >= 3600 && amount > 0)
+        ) {
           return;
         }
         setBreakTime((prev) => prev + amount);
       } else {
-        if (sessionTime <= 60 && amount < 0) {
-          return;
-        }
-        if (sessionTime >= 3600) {
+        if (
+          (sessionTime <= 60 && amount < 0) ||
+          (sessionTime >= 3600 && amount > 0)
+        ) {
           return;
         }
         setSessionTime((prev) => prev + amount);
